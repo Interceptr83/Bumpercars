@@ -1,0 +1,33 @@
+.pagecard {
+    background-color: grey;
+    border: dashed;
+    border-color: black;
+    border-width: 2px;
+}
+
+header {
+    background-color: red;
+    border: dashed;
+    border-color: black;
+    border-width: 2px;
+}
+.side1 {
+    background-color: blue;
+    border: dashed;
+    border-color: black;
+    border-width: 2px;
+}
+
+.content {
+    background-color: white;
+    border: dashed;
+    border-color: black;
+    border-width: 2px;
+}
+
+footer {
+    background-color: purple;
+    border: dashed;
+    border-color: black;
+    border-width: 2px;
+}
