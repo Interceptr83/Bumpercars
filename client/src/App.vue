@@ -8,9 +8,9 @@
   export default {
     name: 'App',
     components: {
-      bumpercars
-    }
-}
+      bumpercars,
+    },
+  };
 </script>
 
 <style>

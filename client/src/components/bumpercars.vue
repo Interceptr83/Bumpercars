@@ -1,16 +1,16 @@
 <template>
   <div>
-      <canvas ref="game" width="640" height="480" style="border: 1px solid black;"></canvas> 
+      <canvas ref="game" width="500" height="500" style="border: 1px solid black;"></canvas> 
 
-      <p>
-        <button v-on:click="move('up')">Up</button>
+      <p class="buttons">
+        <button v-on:click="move('up')"><span class="iconify" data-icon="bx:bxs-up-arrow-square" data-width="50" data-height="50" style="color: gray;"></span></button>
       </p>
       <p>
-        <button v-on:click="move('left')">Left</button>
-        <button v-on:click="move('right')">Right</button>
+        <button v-on:click="move('left')"><span class="iconify" data-icon="bx:bxs-left-arrow-square" data-width="50" data-height="50" style="color: gray;"></span></button>
+        <button v-on:click="move('right')"><span class="iconify" data-icon="bx:bxs-right-arrow-square" data-width="50" data-height="50" style="color: gray;"></span></button>
       </p>
-      <p>
-        <button v-on:click="move('down')">down</button>
+      <p class="buttons">
+        <button v-on:click="move('down')"><span class="iconify" data-icon="bx:bxs-down-arrow-square" data-width="50" data-height="50" style="color: gray;"></span></button>
       </p> 
   </div>
     
@@ -37,7 +37,7 @@ export default {
       this.socket.on("position", data => {
           this.position = data; 
           this.context.clearRect(0, 0, this.$refs.game.width, this.$refs.game.height);
-          this.context.fillRect(this.position.x, this.position.y, 20, 20);
+          this.context.fillRect(this.position.x, this.position.y, 50, 50);
       }); 
   },
 
@@ -51,4 +51,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+  .buttons {
+    padding-left: 28px;
+
+  }
 </style>
