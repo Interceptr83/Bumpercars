@@ -27,4 +27,3 @@ const gameServer = new colyseus.Server({
 gameServer.define('BumperdotsRoom', MyRoom);
 
 gameServer.listen(port);
-

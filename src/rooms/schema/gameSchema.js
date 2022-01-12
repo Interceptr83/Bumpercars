@@ -10,6 +10,7 @@ class MyRoomState extends schema.Schema {
 
 schema.defineTypes(MyRoomState, {
   mySynchronizedProperty: "string",
+
 });
 
 class Player extends Schema {
@@ -20,6 +21,7 @@ class Player extends Schema {
     this.x = 0;
     this.y = 0;
     this.teamNumber = teamNumber;
+    this.score = 0;
   }
 }
 defineTypes(Player, {
@@ -28,6 +30,7 @@ defineTypes(Player, {
   x: "number",
   y: "number",
   teamNumber: "number",
+  score: "number",
 });
 
 class RoomSchema extends Schema {

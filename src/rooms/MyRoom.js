@@ -1,24 +1,30 @@
 const colyseus = require('colyseus');
-const { MyRoomState } = require('./schema/MyRoomState');
+const { MyRoomState, Player } = require('./schema/gameSchema');
+
+
 
 exports.MyRoom = class extends colyseus.Room {
 
-  onCreate (options) {
-    // Creates fresh room state
+  onCreate (teamNumber) { 
+
+    let teamNumber = 1;
+
+    player = new Player(teamNumber);
+
     this.setState(new MyRoomState());
 
-    // Assigns random 5 digit number to room ID.
-    this.roomId = generateId();
-
     this.onMessage("type", (client, message) => {
-      // Handles client messages of "type" to room (eg. of "type": "move", "addScore")
+      //
+      // handle "type" message.
+      //
     });
 
   }
-  
 
-  onJoin (client, options) {
+  onJoin (client, teamNumber) {
     console.log(client.sessionId, "joined!");
+    player = new Player(teamNumber);
+    
   }
 
   onLeave (client, consented) {
@@ -31,6 +37,4 @@ exports.MyRoom = class extends colyseus.Room {
 
 }
 
-function generateId() {
-  return Math.floor(Math.random()*90000) + 10000;
-}
+
