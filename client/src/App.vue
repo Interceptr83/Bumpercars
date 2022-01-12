@@ -10,6 +10,7 @@
     components: {
       bumpercars,
     },
+    
   };
 </script>
 
