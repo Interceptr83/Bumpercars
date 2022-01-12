@@ -24,7 +24,7 @@ const gameServer = new colyseus.Server({
   server: http.createServer(app)
 });
 
-gameServer.define('BumperdotsRoom', gameRoom).filterBy('PIN');
+gameServer.define('BumperdotsRoom', MyRoom);
 
 gameServer.listen(port);
 
