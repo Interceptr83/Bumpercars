@@ -61,33 +61,39 @@
 </template>
 
 <script>
-import io from "socket.io-client";
+const Colyseus = require('colyseus.js');
 
 export default {
   name: 'bumpercars',
   data() {
     return {
-      socket:{},
+      client:{},
+      room:{},
       context:{},
       position:{x: 0, y: 0},
-      position2:{x: 450, y: 450}
+      position2:{x: 50, y: 50}
     }
   },
   created() {
-      this.socket = io("http://localhost:3000");
+      
   },
-  mounted() {
+  async mounted() {
+      const client = new Colyseus.Client('ws://localhost:2567') 
+      this.room = await client.joinOrCreate('my_room');
+      
       this.context = this.$refs.game.getContext("2d");
-      this.socket.on("position", data => {
-          this.position = data; 
+      this.room.onMessage("position", data => {
+          this.position.x = data.x; 
+          this.position.y = data.y;
           this.context.clearRect(0, 0, this.$refs.game.width, this.$refs.game.height);
           this.context.fillStyle = "red";
           this.context.fillRect(this.position.x, this.position.y, 45, 45);
           this.context.fillStyle = "blue";
           this.context.fillRect(this.position2.x, this.position2.y, 45, 45);
       }); 
-      this.socket.on("position2", data => {
-          this.position2 = data; 
+      this.room.onMessage("position2", data => {
+          this.position2.x = data.x; 
+          this.position2.y = data.y;
           this.context.clearRect(0, 0, this.$refs.game.width, this.$refs.game.height);
           this.context.fillStyle = "blue";
           this.context.fillRect(this.position2.x, this.position2.y, 45, 45);
@@ -97,10 +103,10 @@ export default {
   },
   methods: {
       move(direction) {
-        this.socket.emit("move", direction);
+        this.room.send("move", direction);
       },
       move2(direction2) {
-        this.socket.emit("move2", direction2);
+        this.room.send("move2", direction2);
       },
   }
 }  
