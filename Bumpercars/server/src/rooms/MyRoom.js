@@ -3,7 +3,9 @@ const { MyRoomState, Player } = require('./schema/MyRoomState');
 
 exports.MyRoom = class extends colyseus.Room {
 
-  onCreate (options) {
+  async onCreate (options) {
+    
+  try{
     this.setState(new MyRoomState());
     let player = new Player();
     this.state.players.set('one', player);
@@ -11,18 +13,24 @@ exports.MyRoom = class extends colyseus.Room {
     player.position.y = 0;
     console.log(player.position);
     this.broadcast("position", player.position);
-
+  }
+  catch(e){
+    console.log('Error creating room: ', e);
+  }
     
     this.onMessage("type", (client, message) => {
       
     });
 
 
-    this.onMessage("move", (client, data) => {
-      let player = this.state.players.get('one');
-      let player2 = this.state.players.get('two');
+    this.onMessage("move", async (client, data) => {
+      try{
 
-      console.log("PLAYER MOVE", data)
+        let player = await this.state.players.get('one');
+        let player2 = await this.state.players.get('two');
+        
+        console.log("PLAYER MOVE", data)
+      
       
       switch(data) {
             case "left": player.position.x -= 45;
@@ -54,10 +62,16 @@ exports.MyRoom = class extends colyseus.Room {
           };
             break;
       }
+    }
+    catch(e){
+      console.log('Error: ', e);
+    }
       
     });
 
     this.onMessage("move2", (client, data) => {
+    try {
+      
       let player = this.state.players.get('one');
       let player2 = this.state.players.get('two');
 
@@ -93,7 +107,10 @@ exports.MyRoom = class extends colyseus.Room {
           };
             break;
       }
-      
+    }
+    catch(e){
+      console.log('Error: ', e);
+    }
     });
 
   }

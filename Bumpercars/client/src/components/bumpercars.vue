@@ -78,8 +78,11 @@ export default {
       
   },
   async mounted() {
-      const client = new Colyseus.Client('ws://zvl3n4.colyseus.dev:2567') 
+      const client = new Colyseus.Client(process.env.NODE_ENV !== 'production' ? 'ws://bumper-jesus.herokuapp.com/': 'ws://localhost:2567' ) 
+      
+      
       this.room = await client.joinOrCreate('my_room');
+      
       
       this.context = this.$refs.game.getContext("2d");
       this.room.onMessage("position", data => {
@@ -103,6 +106,7 @@ export default {
   },
   methods: {
       move(direction) {
+        
         this.room.send("move", direction);
       },
       move2(direction2) {
