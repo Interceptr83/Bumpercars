@@ -1,0 +1,63 @@
+.pagecard {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+header {
+    background-color:#2a6806;
+    border-width: 2px;
+    border-radius: 10px 10px 0px 0px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.side1 {
+    background-color: #2a6806;
+}
+
+.content {
+    padding: 60px;
+    background-color: white;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+footer {
+    background-color: #2a6806;
+    border-radius: 0px 0px 10px 10px;
+}
+button {
+    padding: 0px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.buttons {
+    justify-content: center;
+}
+
+.midbuts {
+    padding: 0px;
+    margin: 0px;
+    justify-content: center;
+}
+
+.redcont {
+    border-style: dotted;
+    border-color: red;
+    padding: 0px;
+    margin: 0px;
+}
+.bluecont {
+    border-style: dotted;
+    border-color:blue;
+    padding: 0px;
+    margin: 0px;
+}
+.controls-card {
+    padding: 0px;
+    margin-top: 60px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color:grey;
+}
